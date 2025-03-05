@@ -1,0 +1,30 @@
+<div class="container">
+    <h2 class="text-center mb-4">Product List</h2>
+    <div class="addBtn">
+
+        <button class="btn btn-primary mb-3" routerLink="/add-products">Add Product</button>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let product of products; let i = index">
+            <div class="card shadow-sm product-card">
+                <div class="product-image">
+                    <img *ngIf="product.productImage.length > 0"
+                        [src]="'http://localhost:5000/uploads/' + product.productImage[0]" alt="Product Image"
+                        class="img-fluid" />
+                </div>
+
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.productName }}</h5>
+                    <p class="card-text">Stock: {{ product.productStock }}</p>
+
+                    <div class="gap-3">
+                        <button class="btn btn-secondary mt-2 me-2" (click)="editProduct(product)">Update</button>
+                        <button class="btn btn-danger mt-2" (click)="deleteProduct(i)">Delete</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

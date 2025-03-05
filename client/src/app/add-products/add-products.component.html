@@ -1,0 +1,21 @@
+<div class="container">
+  <h2> Add Product</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="addProduct()" enctype="multipart/form-data">
+    <input type="text" placeholder="Product Name" formControlName="productName" required />
+    <input type="number" placeholder="Stocks" formControlName="productStock" required />
+
+    <input type="file" (change)="onFileSelected($event)" multiple accept="image/*" />
+
+    <div *ngIf="imagePreviews.length > 0">
+      <p>Image Preview:</p>
+      <div *ngFor="let img of imagePreviews">
+        <img [src]="img" alt="Selected Image" width="100" />
+      </div>
+    </div>
+
+    <button type="submit">Add Product</button>
+  </form>
+
+  <button class="btn btn-secondary mt-3" routerLink="/productList">Back to Products</button> 
+</div>
